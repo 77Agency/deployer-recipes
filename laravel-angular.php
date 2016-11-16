@@ -56,9 +56,9 @@ task('client:npm:clean', function () {
 })->desc('Remove NPM packages');
 
 task('client:build', [
+    'client:npm:clean',
     'client:npm:install',
     'client:npm:build',
-    'client:npm:clean',
 ])->desc('Build client');
 
 task('deploy:client', function () {

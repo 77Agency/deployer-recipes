@@ -112,15 +112,20 @@ task('deploy:rollbar', function () {
 task('deploy', [
     'client:build',
     'deploy:prepare',
+    'deploy:lock',
     'deploy:release',
     'deploy:update_code',
     'deploy:shared',
     'deploy:vendors',
+    'deploy:writable',
     'deploy:client',
-    'deploy:migrate',
     'deploy:apidocs',
+    'artisan:migrate',
     'deploy:symlink',
+    'deploy:unlock',
     'cleanup',
+    'artisan:cache:clear',
+    'artisan:config:cache',
 ])->desc('Deploy your project');
 after('deploy', 'deploy:rollbar');
 

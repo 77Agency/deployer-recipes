@@ -1,2 +1,3 @@
-# deployer-recipes
-Custom recipes for Deployer
+# Deployer recipes
+
+Custom recipes for [Deployer](https://deployer.org).

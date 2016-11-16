@@ -2,6 +2,8 @@
 
 namespace Deployer;
 
+require 'recipe/laravel.php';
+
 /*————————————————————
   CONFIG & DEFAULTS
 ————————————————————*/

@@ -23,13 +23,13 @@ set('writable_dirs', ['bootstrap/cache', 'storage']);
 set('keep_releases', 3);
 set('default_stage', 'local'); 
 
-env('development', false);
-env('bin/composer', 'composer');
-env('bin/php', 'php');
-env('bin/git', 'git');
-env('bin/npm', 'npm');
-env('composer_options', 'install --verbose --prefer-dist --optimize-autoloader --no-progress --no-interaction');
-env('protractor_options', '--seleniumAddress http://95.130.39.72:4444/wd/hub');
+set('development', false);
+set('bin/composer', 'composer');
+set('bin/php', 'php');
+set('bin/git', 'git');
+set('bin/npm', 'npm');
+set('composer_options', 'install --verbose --prefer-dist --optimize-autoloader --no-progress --no-interaction');
+set('protractor_options', '--seleniumAddress http://95.130.39.72:4444/wd/hub');
 
 serverList('config/servers.yml');
 
@@ -68,10 +68,10 @@ task('deploy:client', function () {
 })->desc('Upload client');
 
 task('deploy:vendors', function () {
-    $composer = env('bin/composer');
-    $envVars = env('env_vars') ? 'export ' . env('env_vars') . ' &&' : '';
-    $dev = env('development');
-    $composerOptions = env('composer_options') . ' ' . ($dev ? '--dev' : '--no-dev');
+    $composer = get('bin/composer');
+    $envVars = get('env_vars') ? 'export ' . get('env_vars') . ' &&' : '';
+    $dev = get('development');
+    $composerOptions = get('composer_options') . ' ' . ($dev ? '--dev' : '--no-dev');
     run("cd {{release_path}} && $envVars $composer {$composerOptions}");
 })->desc('Installing vendors');
 
@@ -100,7 +100,7 @@ task('deploy:key:generate', function () {
 })->desc('Run Laravel key generation');
 
 task('deploy:rollbar', function () {
-    $stages = implode(',', env('stages'));
+    $stages = implode(',', get('stages'));
     cd('{{deploy_path}}/current');
     run('curl https://api.rollbar.com/api/1/deploy/ ' .
         '-F access_token={{rollbar_access_token}} ' .

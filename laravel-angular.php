@@ -34,9 +34,9 @@ set('protractor_options', '--seleniumAddress http://95.130.39.72:4444/wd/hub');
 serverList('config/servers.yml');
 
 localServer('local')
-    ->env('development', true)
-    ->env('deploy_path', __DIR__ . '/deploy')
-    ->env('test_url', 'http://localhost:3000')
+    ->set('development', true)
+    ->set('deploy_path', __DIR__ . '/deploy')
+    ->set('test_url', 'http://localhost:3000')
     ->stage('local');
 
 /*————————————————————

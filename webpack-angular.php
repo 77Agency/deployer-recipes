@@ -88,7 +88,7 @@ after('deploy', 'deploy:rollbar');
 ————————————————————*/
 
 task('test:karma', function () {
-    runLocally('cd client && npm run test || exit 0', 300);
+    runLocally('npm run test || exit 0', 300);
 })->desc('Run Karma tests');
 
 task('test', [
@@ -100,7 +100,7 @@ task('test', [
 ————————————————————*/
 
 task('analyze:jscpd', function () {
-    runLocally('cd client && node_modules/jscpd/bin/jscpd -p src --min-tokens 50 -r xml -o jscpd.xml');
+    runLocally('node_modules/jscpd/bin/jscpd -p src --min-tokens 50 -r xml -o jscpd.xml');
 })->desc('Run JS Copy/Paste Detector (CPD) analysis');
 
 task('analyze', [

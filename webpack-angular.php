@@ -39,7 +39,8 @@ task('client:npm:install', function () {
 })->desc('Install NPM packages');
 
 task('client:npm:build', function () {
-    runLocally('rm -rf dist && npm run build', 600);
+    $stage = input()->getArgument('stage');
+    runLocally("rm -rf dist && NODE_ENV=$stage npm run build", 600);
 })->desc('Build Webpack project');
 
 task('client:npm:clean', function () {

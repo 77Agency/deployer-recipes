@@ -101,7 +101,7 @@ task('test', [
 ————————————————————*/
 
 task('analyze:jscpd', function () {
-    runLocally('node_modules/jscpd/bin/jscpd -p src --min-tokens 50 -r xml -o jscpd.xml');
+    runLocally('node_modules/jscpd/bin/jscpd -p src --min-tokens 50 -r xml -o jscpd.xml -e **/*.min.js');
 })->desc('Run JS Copy/Paste Detector (CPD) analysis');
 
 task('analyze', [

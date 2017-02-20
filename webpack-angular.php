@@ -56,7 +56,7 @@ task('client:build', [
 task('deploy:client', function () {
     runLocally('tar cvzf client-dist.tgz -C dist .');
     upload('client-dist.tgz', '{{download_path}}/release/client-dist.tgz');
-    run('cd {{release_path}} && tar zxvf client-dist.tgz -C public');
+    run('cd {{release_path}} && tar zxvf client-dist.tgz && rm client-dist.tgz');
 })->desc('Upload client');
 
 task('deploy:rollbar', function () {

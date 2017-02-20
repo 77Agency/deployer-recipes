@@ -2,7 +2,7 @@
 
 namespace Deployer;
 
-require 'recipe/laravel.php';
+require 'recipe/common.php';
 
 /*————————————————————
   CONFIG & DEFAULTS
@@ -74,9 +74,6 @@ task('deploy', [
     'deploy:prepare',
     'deploy:lock',
     'deploy:release',
-    'deploy:update_code',
-    'deploy:shared',
-    'deploy:writable',
     'deploy:client',
     'deploy:symlink',
     'deploy:unlock',
